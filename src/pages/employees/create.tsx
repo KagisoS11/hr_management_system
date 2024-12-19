@@ -7,10 +7,10 @@ export default function CreateEmployee() {
 
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
-  const [position, setPosition] = useState('');
+  const [manager, setManager] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [status, setStatus] = useState('Active');
+  const [status, setStatus] = useState('');
 
   // Load employee for editing
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function CreateEmployee() {
       if (employee) {
         setName(employee.name);
         setSurname(employee.surname);
-        setPosition(employee.position);
+        setManager(employee.manager);
         setEmail(employee.email);
         setPhone(employee.phone);
         setStatus(employee.status);
@@ -41,7 +41,7 @@ export default function CreateEmployee() {
       id: id ? parseInt(id as string) : Date.now(), // Generate unique id if creating
       name,
       surname,
-      position,
+      manager,
       email,
       phone,
       status,
@@ -86,16 +86,6 @@ export default function CreateEmployee() {
           />
         </label>
         <label className="block mb-4">
-          Position
-          <input
-            type="text"
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </label>
-        <label className="block mb-4">
           Email
           <input
             type="email"
@@ -106,7 +96,7 @@ export default function CreateEmployee() {
           />
         </label>
         <label className="block mb-4">
-          Phone
+          Telephone Number
           <input
             type="text"
             value={phone}
@@ -116,12 +106,25 @@ export default function CreateEmployee() {
           />
         </label>
         <label className="block mb-4">
+          Manager
+          <select
+            value={manager}
+            onChange={(e) => setManager(e.target.value)}
+            className="w-full p-2 border rounded"
+          >
+            <option value=" "></option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <label className="block mb-4">
           Status
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
             className="w-full p-2 border rounded"
           >
+            <option value=" "></option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
