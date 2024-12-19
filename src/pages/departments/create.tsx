@@ -7,7 +7,7 @@ export default function CreateDepartment() {
 
   const [name, setName] = useState('');
   const [manager, setManager] = useState('');
-  const [status, setStatus] = useState('Active');
+  const [status, setStatus] = useState('');
 
   // Load department for editing
   useEffect(() => {
